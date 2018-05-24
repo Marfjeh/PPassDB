@@ -1,6 +1,6 @@
 # PPassDB.
 
-A password manager imspired by RatticDB.
+A password manager inspired by RatticDB.
 
 Powered by Laravel OwO
 
