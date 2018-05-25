@@ -45,7 +45,7 @@
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                             <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                         @else
-                        <li><a class="nav-link" href="#">Passwords</a></li>
+                        <li><a class="nav-link" href="/accounts">Passwords</a></li>
                         <li><a class="nav-link" href="#">Change Queue <span class="badge badge-warning">69</span></a></li>
                         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#">Tags</a></li>
                         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#">Groups</a></li>

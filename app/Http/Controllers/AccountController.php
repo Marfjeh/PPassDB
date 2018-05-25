@@ -14,7 +14,8 @@ class AccountController extends Controller
      */
     public function index()
     {
-        return view('Account.index');
+        $account = Account::all();
+        return view('Account.index', compact($account, 'account'));
     }
 
     /**
@@ -35,7 +36,21 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+          'name' => 'required',
+        ]);
+        $account = Account::create([
+          'name' => $request->name,
+          'url' => $request->url,
+          'username' => $request->username,
+          'password' => $request->password,
+          'WriteGroup' => $request->WriteGroup,
+          'ReadGroup' => $request->ReadGroup,
+          'Tagid' => $request->Tag,
+          'Description' => $request->Description,
+          'ChangeQueue' => 0
+        ]);
+        return redirect('/accounts');
     }
 
     /**
