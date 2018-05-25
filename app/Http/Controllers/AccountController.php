@@ -50,6 +50,7 @@ class AccountController extends Controller
           'Description' => $request->Description,
           'ChangeQueue' => 0
         ]);
+        alert()->success('Account Created', 'Successfully')->toToast();
         return redirect('/accounts');
     }
 
@@ -97,7 +98,7 @@ class AccountController extends Controller
         $account->Description = $request->Description;
         $account->ChangeQueue = 0;
         $account->save();
-        $request->session()->flash('message', 'Successfully edited!');
+        alert()->success('Account Edited', 'Successfully')->toToast();
       return redirect('/accounts');
     }
 
@@ -110,7 +111,26 @@ class AccountController extends Controller
     public function destroy(Account $account, Request $request)
     {
         $account->delete();
-        $request->session()->flash('message', 'Deleted. Notice the entry is still in the database stored. if it needs to be removed completly, contact an adminsitrator');
+        alert()->warning('Deleted', 'Notice the entry is still in the database stored. if it needs to be removed completly, contact an adminsitrator')->toToast()->showCloseButton()->autoClose(10000);
         return redirect('/accounts');
+    }
+
+    /**
+     * Add the selected entry to Changequeue.
+     * 
+     * @param  \App\Account  $account
+     * @return \Illuminate\Http\Response
+     */
+    public function addtoChangeQueue(Account $account){
+      if($account->ChangeQueue == 0){
+        $account->ChangeQueue = 1;
+        alert()->success('Added to Changequeue', 'Successfully')->toToast();
+      } else {
+        $account->ChangeQueue = 0;
+        alert()->success('Removed from Changeququq', 'Successfully')->toToast();
+      }
+      $account->save();
+      return redirect('/accounts');
+      
     }
 }

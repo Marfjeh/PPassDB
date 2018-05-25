@@ -16,3 +16,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('accounts', 'AccountController')->middleware('auth');
 Route::resource('tags', 'TagController')->middleware('auth');
+route::get('/403', function() { return view('errors.403'); });
+route::get('/404', function() { return view('errors.404'); });
+route::get('/500', function() { return view('errors.500'); });

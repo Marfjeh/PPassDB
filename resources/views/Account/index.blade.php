@@ -20,11 +20,9 @@
                       </div>
                     <br>
                     @if(count($account) <= 0)
-                    <div class="alert alert-warning" role="alert">
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
                         <i class="fas fa-exclamation-triangle"></i> This list is empty. Maybe you don't have the required groups. Please contact your administrator.
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
                     @endif
                     <table class="table">
@@ -49,7 +47,7 @@
                               <td>
                                   <div class="btn-group" role="group">
                                   <button class="btn btn-primary" title="Show" onclick="window.location.href = '/accounts/{{$item->id}}';"><i class="fas fa-id-card"></i></button>
-                                    <button class="btn btn-success" title="edit this"><i class="fas fa-edit"></i></button>
+                                  <button class="btn btn-success" title="edit this" onclick="window.location.href ='/accounts/{{$item->id}}/edit'"><i class="fas fa-edit"></i></button>
                                     <button class="btn btn-warning" title="Add to Change queue"><i class="fas fa-gavel"></i></button>
                                     <button class="btn btn-danger" title="Soft-delete this" onclick="event.preventDefault();
                                     document.getElementById('form-del-{{$item->id}}').submit();" ><i class="fas fa-trash"></i></button>
