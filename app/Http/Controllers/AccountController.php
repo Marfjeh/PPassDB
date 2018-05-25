@@ -61,7 +61,7 @@ class AccountController extends Controller
      */
     public function show(Account $account)
     {
-        //
+        return view('Account.view', compact('account', $account));
     }
 
     /**
@@ -72,7 +72,7 @@ class AccountController extends Controller
      */
     public function edit(Account $account)
     {
-        //
+        return view('Account.edit');
     }
 
     /**
@@ -84,7 +84,21 @@ class AccountController extends Controller
      */
     public function update(Request $request, Account $account)
     {
-        //
+      $request->validate([
+        'name' => 'required',
+      ]);
+        $account->name = $request->name;
+        $account->url = $request->url;
+        $account->username = $request->username;
+        $account->password = $request->password;
+        $account->WriteGroup = $request->WriteGroup;
+        $account->ReadGroup = $request->ReadGroup;
+        $account->Tagid = $request->Tag;
+        $account->Description = $request->Description;
+        $account->ChangeQueue = 0;
+        $account->save();
+        $request->session()->flash('message', 'Successfully edited!');
+      return redirect('/accounts');
     }
 
     /**
@@ -95,6 +109,8 @@ class AccountController extends Controller
      */
     public function destroy(Account $account)
     {
-        //
+        $account->delete();
+        $request->session()->flash('message', 'Deleted. Notice the entry is still in the database stored. if it needs to be removed completly, contact an adminsitrator');
+        return redirect('/accounts');
     }
 }
