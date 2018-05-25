@@ -107,7 +107,7 @@ class AccountController extends Controller
      * @param  \App\Account  $account
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Account $account)
+    public function destroy(Account $account, Request $request)
     {
         $account->delete();
         $request->session()->flash('message', 'Deleted. Notice the entry is still in the database stored. if it needs to be removed completly, contact an adminsitrator');

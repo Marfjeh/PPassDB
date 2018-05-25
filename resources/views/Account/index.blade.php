@@ -51,13 +51,19 @@
                                   <button class="btn btn-primary" title="Show" onclick="window.location.href = '/accounts/{{$item->id}}';"><i class="fas fa-id-card"></i></button>
                                     <button class="btn btn-success" title="edit this"><i class="fas fa-edit"></i></button>
                                     <button class="btn btn-warning" title="Add to Change queue"><i class="fas fa-gavel"></i></button>
-                                    <button class="btn btn-danger" title="Soft-delete this"><i class="fas fa-trash"></i></button>
+                                    <button class="btn btn-danger" title="Soft-delete this" onclick="event.preventDefault();
+                                    document.getElementById('form-del-{{$item->id}}').submit();" ><i class="fas fa-trash"></i></button>
                                   </div>
+                                <form action="{{url('accounts', [$item->id])}}" id="form-del-{{$item->id}}" method="POST">
+                                      <input type="hidden" name="_method" value="DELETE">
+                                      @csrf
+                                 </form>
                                 </td>
                             </tr>
                           @endforeach
                         </tbody>
                       </table>
+                      
                 </div>
             </div>
         </div>
