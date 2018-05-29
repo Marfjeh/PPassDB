@@ -131,6 +131,5 @@ class AccountController extends Controller
       }
       $account->save();
       return redirect('/accounts');
-      
     }
 }

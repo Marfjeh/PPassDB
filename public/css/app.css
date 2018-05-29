@@ -1,4 +1,9 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,600);/*!
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,600);.password-text {
+  color: transparent;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/*!
  * Bootstrap v4.1.1 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
  * Copyright 2011-2018 Twitter, Inc.

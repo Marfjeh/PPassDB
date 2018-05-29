@@ -6,7 +6,6 @@
             <div class="card">
                 <div class="card-header">Passwords</div>
                 <div class="card-body">
-                     
                     <div class="row">
                         <div class="col">
                           <div class="btn-group" role="group">
@@ -21,7 +20,7 @@
                     <br>
                     @if(count($account) <= 0)
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <i class="fas fa-exclamation-triangle"></i> This list is empty. Maybe you don't have the required groups. Please contact your administrator.
+                        <i class="fas fa-exclamation-triangle"></i> This list is empty. Maybe you don't have the required groups. If you believe this is an error, please contact your administrator.
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
                     @endif
@@ -39,7 +38,7 @@
                         <tbody>
                           @foreach($account as $item)
                           <tr>
-                            <th><a href="#">{{$item->name}}</a></th>
+                            <th><a href="/accounts/{{$item->id}}">{{$item->name}}</a></th>
                             <td>{{$item->username}}</td>
                               <td>{{$item->WriteGroup}}</td>
                               <td>{{$item->ReadGroup}}</td>
@@ -61,7 +60,7 @@
                           @endforeach
                         </tbody>
                       </table>
-                      
+
                 </div>
             </div>
         </div>
