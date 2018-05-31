@@ -15,5 +15,4 @@ Route::get('/', function () { return view('index'); });
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('accounts', 'AccountController')->middleware('auth');
-Route::get('accounts/queue/{id}', 'AccountController@ChangeQueue')->middleware('auth');
 Route::resource('tags', 'TagController')->middleware('auth');
