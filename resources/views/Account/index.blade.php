@@ -9,8 +9,10 @@
                     <div class="row">
                         <div class="col">
                           <div class="btn-group" role="group">
-                            <button class="btn btn-primary" onclick="window.location.href = '/accounts/create';"><i class="fas fa-plus-circle"></i></button>
-                            <button class="btn btn-primary" onclick="location.reload();"><i class="fas fa-sync-alt"></i></button>
+                            <button class="btn btn-primary" onclick="window.location.href = '/accounts/create';"><i class="fas fa-plus-circle"></i> New</button>
+                            <button class="btn btn-primary" onclick="location.reload();"><i class="fas fa-sync-alt"></i> Reload</button>
+                              <a class="btn btn-danger" href="/accounts/trashed"><i class="fas fa-trash-alt"></i> Show trashed</a>
+                              <a class="btn btn-warning" href="/accounts/queue"><i class="fas fa-exclamation-circle"></i> Change Queue</a>
                           </div>
                         </div>
                         <div class="col">
@@ -37,7 +39,7 @@
                         </thead>
                         <tbody>
                           @foreach($account as $item)
-                          <tr>
+                          <tr @if($item->ChangeQueue === 1) class="table-warning" @endif>
                             <th><a href="/accounts/{{$item->id}}">{{$item->name}}</a></th>
                             <td>{{$item->username}}</td>
                               <td>{{$item->WriteGroup}}</td>
@@ -47,7 +49,7 @@
                                   <div class="btn-group" role="group">
                                   <button class="btn btn-primary" title="Show" onclick="window.location.href = '/accounts/{{$item->id}}';"><i class="fas fa-id-card"></i></button>
                                   <button class="btn btn-success" title="edit this" onclick="window.location.href ='/accounts/{{$item->id}}/edit'"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-warning" title="Add to Change queue"><i class="fas fa-gavel"></i></button>
+                                    <button class="btn btn-warning" title="Add to Change queue" onclick="document.getElementById('form-queue-{{$item->id}}').submit();"><i class="fas fa-exclamation-circle"></i></button>
                                     <button class="btn btn-danger" title="Soft-delete this" onclick="event.preventDefault();
                                     document.getElementById('form-del-{{$item->id}}').submit();" ><i class="fas fa-trash"></i></button>
                                   </div>
@@ -55,12 +57,16 @@
                                       <input type="hidden" name="_method" value="DELETE">
                                       @csrf
                                  </form>
+                                  <form method="POST" action="{{url('accounts', [$item->id])}}" id="form-queue-{{$item->id}}">
+                                      <input type="hidden" name="_method" value="PATCH">
+                                      <input type="hidden" name="ChangeQueue" id="ChangeQueue" value="@if($item->ChangeQueue === 1) 0 @else 1 @endif">
+                                      @csrf
+                                  </form>
                                 </td>
                             </tr>
                           @endforeach
                         </tbody>
                       </table>
-
                 </div>
             </div>
         </div>

@@ -73,7 +73,7 @@ class AccountController extends Controller
      */
     public function edit(Account $account)
     {
-        return view('Account.edit');
+        return view('Account.edit', compact('account'));
     }
 
     /**
@@ -85,18 +85,25 @@ class AccountController extends Controller
      */
     public function update(Request $request, Account $account)
     {
-      $request->validate([
-        'name' => 'required',
-      ]);
-        $account->name = $request->name;
-        $account->url = $request->url;
-        $account->username = $request->username;
-        $account->password = $request->password;
-        $account->WriteGroup = $request->WriteGroup;
-        $account->ReadGroup = $request->ReadGroup;
-        $account->Tagid = $request->Tag;
-        $account->Description = $request->Description;
-        $account->ChangeQueue = 0;
+        if(isset($request->ChangeQueue) ) {
+            if ($request->ChangeQueue === '1' || $request->ChangeQueue === '0') {
+                $account->ChangeQueue = $request->ChangeQueue;
+            } else {
+                alert()->error('Error', 'invalid value')->toToast();
+                return redirect('/accounts');
+            }
+        }
+        else {
+            $account->name = $request->name;
+            $account->url = $request->url;
+            $account->username = $request->username;
+            $account->password = $request->password;
+            $account->WriteGroup = $request->WriteGroup;
+            $account->ReadGroup = $request->ReadGroup;
+            $account->Tagid = $request->Tag;
+            $account->Description = $request->Description;
+            $account->ChangeQueue = 0;
+        }
         $account->save();
         alert()->success('Account Edited', 'Successfully')->toToast();
       return redirect('/accounts');
@@ -105,31 +112,14 @@ class AccountController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Account  $account
+     * @param  \App\Account $account
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(Account $account, Request $request)
     {
         $account->delete();
         alert()->warning('Deleted', 'Notice the entry is still in the database stored. if it needs to be removed completly, contact an adminsitrator')->toToast()->showCloseButton()->autoClose(10000);
         return redirect('/accounts');
-    }
-
-    /**
-     * Add the selected entry to Changequeue.
-     * 
-     * @param  \App\Account  $account
-     * @return \Illuminate\Http\Response
-     */
-    public function addtoChangeQueue(Account $account){
-      if($account->ChangeQueue == 0){
-        $account->ChangeQueue = 1;
-        alert()->success('Added to Changequeue', 'Successfully')->toToast();
-      } else {
-        $account->ChangeQueue = 0;
-        alert()->success('Removed from Changeququq', 'Successfully')->toToast();
-      }
-      $account->save();
-      return redirect('/accounts');
     }
 }

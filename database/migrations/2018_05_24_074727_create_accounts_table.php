@@ -23,7 +23,7 @@ class CreateAccountsTable extends Migration
             $table->string('ReadGroup');
             $table->string('Tagid');
             $table->longtext('Description');
-            $table->float('ChangeQueue');
+            $table->integer('ChangeQueue');
             $table->timestamps();
             $table->softDeletes();
         });

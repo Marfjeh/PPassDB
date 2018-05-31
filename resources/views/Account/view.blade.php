@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-11">
+            <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Account: {{$account->name}}</div>
                     <div class="card-body">
@@ -33,52 +33,49 @@
                         <div class="form-group row">
                             <p class="col col-form-label text-md-right">password:</p>
                             <div class="col-md-6">
-                                <input class="form-control" type="password" id="password" value="{{$account->password}}" readonly>
-                            </div>
-                            <div class="col-md-3">
-                                <button class="btn btn-primary" data-clipboard-target="#foo"><i class="fas fa-copy"></i></button>
+                                <input class="form-control" type="password" id="password" value="{{$account->password}}" readonly onmouseover='document.getElementById("password").type="text";' onmouseleave='document.getElementById("password").type="password";'>
                             </div>
                         </div>
                         <div class="form-group row">
                             <p class="col col-form-label text-md-right">WriteGroup:</p>
                             <div class="col-md-6">
-                                <p>{{$account->WriteGroup}}</p>
+                                <p class="form-control">{{$account->WriteGroup}}</p>
                             </div>
                         </div>
                         <div class="form-group row">
                             <p class="col col-form-label text-md-right">ReadGroup</p>
                             <div class="col-md-6">
-                                <p>{{$account->ReadGroup}}</p>
+                                <p class="form-control">{{$account->ReadGroup}}</p>
                             </div>
                         </div>
                         <div class="form-group row">
                             <p class="col col-form-label text-md-right">Tags:</p>
                             <div class="col-md-6">
-                                <p>{{$account->Tagid}}</p>
+                                <p class="form-control">{{$account->Tagid}}</p>
                             </div>
                         </div>
                         <div class="form-group row">
                             <p class="col col-form-label text-md-right">Description:</p>
                             <div class="col-md-6">
-                                <p>{{$account->Description}}</p>
+                                <p class="form-control">{{$account->Description}}</p>
                             </div>
                         </div>
                         <div class="form-group row">
                             <p class="col col-form-label text-md-right">Created at:</p>
                             <div class="col-md-6">
-                                <p>{{$account->created_at}}</p>
+                                <p class="form-control">{{$account->created_at}}</p>
                             </div>
                         </div>
                         <div class="form-group row">
                             <p class="col col-form-label text-md-right">Updated at:</p>
                             <div class="col-md-6">
-                                <p>{{$account->updated_at}}</p>
+                                <p class="form-control">{{$account->updated_at}}</p>
                             </div>
                         </div>
                         <div class="form-group row">
                             <p class="col col-form-label text-md-right">Deleted at:</p>
                             <div class="col-md-6">
-                                <p>{{$account->deleted_at}}</p>
+                                <p class="form-control">{{$account->deleted_at}}</p>
                             </div>
                         </div>
                     </div>
