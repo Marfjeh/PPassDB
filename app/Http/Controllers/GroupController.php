@@ -5,15 +5,13 @@ namespace App\Http\Controllers;
 use App\Group;
 use Illuminate\Http\Request;
 
-class GroupController extends Controller
-{
+class GroupController extends Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         //
     }
 
@@ -22,8 +20,7 @@ class GroupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         //
     }
 
@@ -33,8 +30,7 @@ class GroupController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         //
     }
 
@@ -44,8 +40,7 @@ class GroupController extends Controller
      * @param  \App\Group  $group
      * @return \Illuminate\Http\Response
      */
-    public function show(Group $group)
-    {
+    public function show(Group $group) {
         //
     }
 
@@ -55,8 +50,7 @@ class GroupController extends Controller
      * @param  \App\Group  $group
      * @return \Illuminate\Http\Response
      */
-    public function edit(Group $group)
-    {
+    public function edit(Group $group) {
         //
     }
 
@@ -67,8 +61,7 @@ class GroupController extends Controller
      * @param  \App\Group  $group
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Group $group)
-    {
+    public function update(Request $request, Group $group) {
         //
     }
 
@@ -78,8 +71,7 @@ class GroupController extends Controller
      * @param  \App\Group  $group
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Group $group)
-    {
+    public function destroy(Group $group) {
         //
     }
 }

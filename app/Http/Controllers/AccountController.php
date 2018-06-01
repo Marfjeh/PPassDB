@@ -5,15 +5,13 @@ namespace App\Http\Controllers;
 use App\Account;
 use Illuminate\Http\Request;
 
-class AccountController extends Controller
-{
+class AccountController extends Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         $account = Account::all();
         return view('Account.index', compact($account, 'account'));
     }
@@ -23,8 +21,7 @@ class AccountController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         return view('Account.create');
     }
 
@@ -34,8 +31,7 @@ class AccountController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         $request->validate([
           'name' => 'required',
         ]);
@@ -60,8 +56,7 @@ class AccountController extends Controller
      * @param  \App\Account  $account
      * @return \Illuminate\Http\Response
      */
-    public function show(Account $account)
-    {
+    public function show(Account $account) {
         return view('Account.view', compact('account', $account));
     }
 
@@ -71,8 +66,7 @@ class AccountController extends Controller
      * @param  \App\Account  $account
      * @return \Illuminate\Http\Response
      */
-    public function edit(Account $account)
-    {
+    public function edit(Account $account) {
         return view('Account.edit', compact('account'));
     }
 
@@ -83,8 +77,7 @@ class AccountController extends Controller
      * @param  \App\Account  $account
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Account $account)
-    {
+    public function update(Request $request, Account $account) {
         if(isset($request->ChangeQueue) ) {
             if ($request->ChangeQueue === '1' || $request->ChangeQueue === '0') {
                 $account->ChangeQueue = $request->ChangeQueue;
@@ -116,8 +109,7 @@ class AccountController extends Controller
      * @return \Illuminate\Http\Response
      * @throws \Exception
      */
-    public function destroy(Account $account, Request $request)
-    {
+    public function destroy(Account $account, Request $request) {
         $account->delete();
         alert()->warning('Deleted', 'Notice the entry is still in the database stored. if it needs to be removed completly, contact an adminsitrator')->toToast()->showCloseButton()->autoClose(10000);
         return redirect('/accounts');

@@ -5,15 +5,13 @@ namespace App\Http\Controllers;
 use App\Tag;
 use Illuminate\Http\Request;
 
-class TagController extends Controller
-{
+class TagController extends Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         //
     }
 
@@ -22,8 +20,7 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         //
     }
 
@@ -33,8 +30,7 @@ class TagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         //
     }
 
@@ -44,8 +40,7 @@ class TagController extends Controller
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function show(Tag $tag)
-    {
+    public function show(Tag $tag) {
         //
     }
 
@@ -55,8 +50,7 @@ class TagController extends Controller
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tag $tag)
-    {
+    public function edit(Tag $tag) {
         //
     }
 
@@ -67,8 +61,7 @@ class TagController extends Controller
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tag $tag)
-    {
+    public function update(Request $request, Tag $tag) {
         //
     }
 
@@ -78,8 +71,7 @@ class TagController extends Controller
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tag $tag)
-    {
+    public function destroy(Tag $tag) {
         //
     }
 }
