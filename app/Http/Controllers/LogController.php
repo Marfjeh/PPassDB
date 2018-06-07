@@ -2,21 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Group;
-use App\Http\Controllers\LogController;
 use App\log;
 use Illuminate\Auth;
 use Illuminate\Http\Request;
 
-class GroupController extends Controller {
+class LogController extends Controller {
+    public function log(string $log, string $ip = null, string $user = null) { //Move this to a Service provider instead.
+        if ($ip === null) $ip = $_SERVER['REMOTE_ADDR'];
+        if ($user === null) $user = Auth::user()->id;
+        $log = Log::create([
+            'log' => $log,
+            'ip' => $ip,
+            'user' => $user
+        ]);
+        return $log;
+    }
+    //TODO: log crud. to manage logs
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public static function index() {
-        $group = Group::all();
-        return view("Group.index", compact('group'));
+    public function index()
+    {
+        //
     }
 
     /**
@@ -24,8 +33,9 @@ class GroupController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
-        return view("Group.create");
+    public function create()
+    {
+        //
     }
 
     /**
@@ -34,36 +44,30 @@ class GroupController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
-        if (Auth::user()->Role === 3) {
-            $group = Group::create([
-                'name' => $request->name
-            ]);
-            alert()->success('Group Created', 'Successfully')->toToast();
-            return redirect('/groups');
-        } else {
-            App::call(LogController::class)->log("Denied access for user trying to add a group in the database");
-            abort(403);
-        }
+    public function store(Request $request)
+    {
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Group  $group
+     * @param  \App\log  $log
      * @return \Illuminate\Http\Response
      */
-    public function show(Group $group) {
+    public function show(log $log)
+    {
         //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Group  $group
+     * @param  \App\log  $log
      * @return \Illuminate\Http\Response
      */
-    public function edit(Group $group) {
+    public function edit(log $log)
+    {
         //
     }
 
@@ -71,20 +75,22 @@ class GroupController extends Controller {
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Group  $group
+     * @param  \App\log  $log
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Group $group) {
+    public function update(Request $request, log $log)
+    {
         //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Group  $group
+     * @param  \App\log  $log
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Group $group) {
+    public function destroy(log $log)
+    {
         //
     }
 }

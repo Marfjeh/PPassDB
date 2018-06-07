@@ -11,7 +11,8 @@
                           <div class="btn-group" role="group">
                             <button class="btn btn-primary" onclick="window.location.href = '/accounts/create';"><i class="fas fa-plus-circle"></i> New</button>
                             <button class="btn btn-primary" onclick="location.reload();"><i class="fas fa-sync-alt"></i> Reload</button>
-                              <a class="btn btn-danger" href="/accounts/trashed"><i class="fas fa-trash-alt"></i> Show trashed</a>
+                              @if(Auth::user()->role >= 2) <a class="btn btn-primary" href="/groups"><i class="fas fa-hand-point-left"></i> Groups</a>
+                              <a class="btn btn-danger" href="/accounts/trashed"><i class="fas fa-trash-alt"></i> Show trashed</a>@endif
                               <a class="btn btn-warning" href="/accounts/queue"><i class="fas fa-exclamation-circle"></i> Change Queue</a>
                           </div>
                         </div>
